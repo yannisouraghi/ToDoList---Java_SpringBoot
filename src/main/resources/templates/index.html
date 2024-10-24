@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>To Do List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+    <body>
+        <button id="modalButton" type="button">ADD TASK</button>
+        <div id="todolist">
+            <h2>To Do List</h2>
+            <ul id="taskList">
+            </ul>
+        </div>
+        <dialog>
+            <div class="modal-content">
+                <form method="post">
+                    <span class="close-modal">&times;</span>
+                    <h2>Add Task</h2>
+                    <label for="task">Task</label>
+                    <input type="text" id="task" name="task" required>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit" onclick="addTask()">ADD</button>
+                </form>
+            </div>
+        </dialog>
+    </body>
+    <script src="/js/script.js"></script>
+</html>
