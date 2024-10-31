@@ -1,23 +1,27 @@
 package com.example.todolist.controller;
 
 import com.example.todolist.service.TaskService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import com.example.todolist.model.Task;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/tasks")
 public class TaskController {
 
+    @Autowired
     private TaskService taskService;
 
-    @PostMapping(path = "/addtask")
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        Task newTask = taskService.addTask(task);
-        return new ResponseEntity<>(newTask, HttpStatus.CREATED);
+    @PostMapping(path = "/addTask")
+    public Task createTask(Model model, @ModelAttribute("task") Task task) {
+        return taskService.addTask(task);
+    }
+
+    @GetMapping(path="/tasks")
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
     }
 }
